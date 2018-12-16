@@ -197,7 +197,7 @@ let g:neocomplcache_enable_smart_case = 1
 " _(アンダースコア)区切りの補完を有効化
 let g:neocomplcache_enable_underbar_completion = 1
 
-let g:neocomplcache_enable_camel_case_completion  =  1
+let g:neocomplcache_enable_camel_case_completion  =  0
 
 " 最初の補完候補を選択状態にする
 let g:neocomplcache_enable_auto_select = 1
