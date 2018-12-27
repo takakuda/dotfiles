@@ -117,6 +117,10 @@ NeoBundle "Shougo/neosnippet"
 " スニペット集
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'tpope/vim-rails'
+NeoBundleLazy 'tpope/vim-endwise', {
+  \ 'autoload' : { 'insert' : 1,}}
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -244,3 +248,4 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : ''
     \ }
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:neocomplcache_ignore_composite_filetype_lists = {'python.unit': 'python','php.unit': 'php',}
