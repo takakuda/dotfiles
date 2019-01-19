@@ -60,6 +60,7 @@ set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 " ESC連打でハイライト解除
+set backspace=indent,eol,start
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 autocmd QuickFixCmdPost *grep* cwindow
