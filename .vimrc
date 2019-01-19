@@ -107,6 +107,32 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle "ctrlpvim/ctrlp.vim"
+NeoBundle 'ngmy/vim-rubocop'
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'posva/vim-vue'
+" コードの自動補完
+NeoBundle 'Shougo/neocomplete.vim'
+" スニペットの補完機能
+NeoBundle "Shougo/neosnippet"
+" スニペット集
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'tpope/vim-rails'
+NeoBundleLazy 'tpope/vim-endwise', {
+  \ 'autoload' : { 'insert' : 1,}}
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers=['rubocop', 'mri']
+let g:ale_fix_on_save = 1
+
+nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
 
 call neobundle#end()
 
@@ -175,7 +201,7 @@ let g:neocomplcache_enable_smart_case = 1
 " _(アンダースコア)区切りの補完を有効化
 let g:neocomplcache_enable_underbar_completion = 1
 
-let g:neocomplcache_enable_camel_case_completion  =  1
+let g:neocomplcache_enable_camel_case_completion  =  0
 
 " 最初の補完候補を選択状態にする
 let g:neocomplcache_enable_auto_select = 1
@@ -203,3 +229,23 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 " --------------------------------
 " Enable rufo (RUby FOrmat)
 let g:rufo_auto_formatting = 1
+autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
+autocmd FileType javascript :set dictionary=$HOME/.vim/dict/javascript.dict,$HOME/.vim/dict/jQuery.dict
+set wildmenu " コマンドモードの補完
+set history=5000 " 保存するコマンド履歴の数
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : ''
+    \ }
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:neocomplcache_ignore_composite_filetype_lists = {'python.unit': 'python','php.unit': 'php',}
