@@ -250,3 +250,4 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ }
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:neocomplcache_ignore_composite_filetype_lists = {'python.unit': 'python','php.unit': 'php',}
+let g:ackprg = 'ag --vimgrep'
