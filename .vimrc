@@ -36,6 +36,7 @@ set wildmode=list:longest
 nnoremap j gj
 nnoremap k gk
 nnoremap <expr> gr ':Rgrep<CR>'
+nnoremap <expr> te ':ter ++curwin<CR>'
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list listchars=tab:\▸\-
