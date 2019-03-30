@@ -5,6 +5,7 @@ set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp
 # bash
 source ~/.bash_profile
 export TERM=xterm-256color
+export BUNDLER_EDITOR=/usr/local/bin/vim
 # HISTORY
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -51,6 +52,10 @@ alias lf="ls -F"
 alias ll="ls -l"
 alias grep='grep --color'
 alias less='less -X -R'
+function find_cd() {
+    cd "$(find . -type d | peco)"
+}
+alias fc="find_cd"
 # エイリアスを拡張する(D)
 setopt ALIASES
 # 以降、定義されたすべての変数は自動的にexportされる
@@ -370,3 +375,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 setopt nonomatch
+
+# === cool-peco init ===
+FPATH="$FPATH:/Users/kei/takakuda/cool-peco"
+autoload -Uz cool-peco
+cool-peco
+alias hist=cool-peco-history
+# ======================
+eval "$(direnv hook zsh)"
