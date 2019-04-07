@@ -108,6 +108,7 @@ NeoBundle 'tpope/vim-rails'
 NeoBundleLazy 'tpope/vim-endwise', {
   \ 'autoload' : { 'insert' : 1,}}
 NeoBundle 'vim-scripts/grep.vim'
+NeoBundle 'elixir-editors/vim-elixir'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
