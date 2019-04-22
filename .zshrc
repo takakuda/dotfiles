@@ -17,8 +17,7 @@ case ${UID} in
     LANG=C
     ;;
 esac
-# キーバインドをVi化
-bindkey -v
+bindkey '^r' peco_select_history
 # プロンプトの設定
 autoload -U colors
 colors
@@ -136,8 +135,6 @@ unsetopt CSH_NULLCMD
 unsetopt CSH_NULL_GLOB
 # CORRECT、CORRECTALLの両オプション、およびspell-wordエディタコマンドでのスペルミス推定で、Dvorak配列を使う
 unsetopt DVORAK
-# ZLE がロードされていてこのオプションがオンになっているのは'bindkey -e'と等価に扱われ、 VI オプションが解除される
-unsetopt EMACS
 # = のファイル名生成が利用される
 setopt EQUALS
 # あるコマンドが非ゼロの終了コードとなったとき、このオプションがセットされていると、ZERRトラップを実行して終了する
@@ -328,8 +325,6 @@ unsetopt TYPESET_SILENT
 setopt UNSET
 # 入力された行を表示する
 unsetopt VERBOSE
-# ZLE がロードされていると、このオプションをセットするのは 'bindkey -v' と同じ効果を持つ
-setopt VI
 # 実行されるコマンドと引数を表示する
 unsetopt XTRACE
 # zsh line editor を利用する
@@ -376,10 +371,21 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 setopt nonomatch
 
-# === cool-peco init ===
-FPATH="$FPATH:/Users/kei/takakuda/cool-peco"
-autoload -Uz cool-peco
-cool-peco
-alias hist=cool-peco-history
-# ======================
 eval "$(direnv hook zsh)"
+setopt HIST_IGNORE_DUPS     # ignore duplication command history list
+setopt SHARE_HISTORY        # share command history data
+setopt EXTENDED_HISTORY
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+function exists { which $1 &> /dev/null }
+function peco_select_history() {
+  local tac
+  exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+  BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER         # move cursor
+  zle -R -c               # refresh
+}
+
+zle -N peco_select_history
