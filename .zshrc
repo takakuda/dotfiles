@@ -51,6 +51,9 @@ alias lf="ls -F"
 alias ll="ls -l"
 alias grep='grep --color'
 alias less='less -X -R'
+# master以外のlocal branchを削除
+alias gbda="git branch | grep -v 'master' | grep -v '*' | xargs git branch -D"
+
 function find_cd() {
     cd "$(find . -type d | peco)"
 }
