@@ -53,7 +53,9 @@ alias grep='grep --color'
 alias less='less -X -R'
 # master以外のlocal branchを削除
 alias gbda="git branch | grep -v 'master' | grep -v '*' | xargs git branch -D"
-
+alias ra="bundle exec rubocop -a"
+alias tm="tmux"
+alias dr="git diff --name-only | xargs bundle exec rubocop -a"
 function find_cd() {
     cd "$(find . -type d | peco)"
 }
@@ -392,3 +394,6 @@ function peco_select_history() {
 }
 
 zle -N peco_select_history
+
+export NVM_DIR="/Users/kei/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
