@@ -131,6 +131,7 @@ NeoBundleLazy 'tpope/vim-endwise', {
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
+NeoBundle 'zxqfl/tabnine-vim'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
