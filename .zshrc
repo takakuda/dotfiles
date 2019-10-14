@@ -51,11 +51,12 @@ alias lf="ls -F"
 alias ll="ls -l"
 alias grep='grep --color'
 alias less='less -X -R'
-# master以外のlocal branchを削除
 alias gbda="git branch | grep -v 'master' | grep -v '*' | xargs git branch -D"
 alias ra="bundle exec rubocop -a"
 alias tm="tmux"
 alias dr="git diff --name-only | xargs bundle exec rubocop -a"
+alias k="kubectl"
+alias vi="vim"
 function find_cd() {
     cd "$(find . -type d | peco)"
 }
