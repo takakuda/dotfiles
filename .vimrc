@@ -43,6 +43,8 @@ nnoremap <expr> tn ':tabnew<CR>'
 nnoremap <S-t> :terminal<CR>
 nnoremap <S-f> :Files<CR>
 
+nnoremap <silent> <C-n> :bprev<CR>
+nnoremap <silent> <C-p> :bnext<CR>
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list listchars=tab:\▸\-
@@ -113,7 +115,7 @@ NeoBundle 'tomasr/molokai'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle "ctrlpvim/ctrlp.vim"
+" NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'posva/vim-vue'
