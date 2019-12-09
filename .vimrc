@@ -134,6 +134,7 @@ NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
 NeoBundle 'zxqfl/tabnine-vim'
+NeoBundle 'w0rp/ale'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
