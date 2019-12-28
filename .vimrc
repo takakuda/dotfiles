@@ -40,7 +40,6 @@ nnoremap k gk
 nnoremap <expr> gr ':Rgrep<CR>'
 nnoremap <expr> te ':ter ++curwin<CR>'
 nnoremap <expr> tn ':tabnew<CR>'
-nnoremap <S-t> :terminal<CR>
 nnoremap <S-f> :Files<CR>
 
 nnoremap <silent> <C-n> :bprev<CR>
