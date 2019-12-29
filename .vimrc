@@ -272,3 +272,5 @@ endif
 let mapleader = "\<Space>"
 " save file
 nmap <Leader>w :w<CR>
+
+autocmd QuickFixCmdPost *grep* cwindow
