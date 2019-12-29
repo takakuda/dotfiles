@@ -268,3 +268,7 @@ let g:neocomplcache_ignore_composite_filetype_lists = {'python.unit': 'python','
 if executable('jvgrep')
   set grepprg=jvgrep
 endif
+
+let mapleader = "\<Space>"
+" save file
+nmap <Leader>w :w<CR>
