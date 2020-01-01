@@ -119,7 +119,7 @@ NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'posva/vim-vue'
 " コードの自動補完
-NeoBundle 'Shougo/neocomplete.vim'
+" NeoBundle 'Shougo/neocomplete.vim'
 " スニペットの補完機能
 NeoBundle "Shougo/neosnippet"
 " スニペット集
