@@ -134,6 +134,7 @@ NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
 NeoBundle 'zxqfl/tabnine-vim'
 NeoBundle 'w0rp/ale'
+NeoBundle 'fatih/vim-go'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -146,6 +147,9 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:ale_fix_on_save = 1
 let g:fzf_layout = { 'down': '~20%' }
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
 
 nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
 
