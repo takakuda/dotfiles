@@ -114,7 +114,6 @@ NeoBundle 'tomasr/molokai'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
-" NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'posva/vim-vue'
