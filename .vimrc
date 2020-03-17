@@ -14,6 +14,22 @@ set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
 
+let mapleader = "\<Space>"
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>g :GFiles<CR>
+nmap <Leader>c :Commands<CR>
+nmap <Leader>n :NERDTreeToggle<CR>
+" turn on Terminal
+nmap <Leader>t :terminal<CR>
+" save file
+nmap <Leader>w :w<CR>
+" close file
+nmap <Leader>q :q<CR>
+" reload vimrc
+nmap <Leader>r :source ~/.vimrc<CR>
+" turn on paste mode
+nmap <Leader>p :set paste!<CR>
 
 " 見た目系
 " 行番号を表示
@@ -45,6 +61,7 @@ nnoremap <S-f> :Files<CR>
 
 nnoremap <silent> <C-n> :bprev<CR>
 nnoremap <silent> <C-p> :bnext<CR>
+
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list listchars=tab:\▸\-
@@ -134,6 +151,8 @@ NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
 NeoBundle 'zxqfl/tabnine-vim'
+NeoBundle 'w0rp/ale'
+NeoBundle 'fatih/vim-go'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -226,6 +245,8 @@ let g:neocomplcache_max_list = 20
 
 " シンタックスをキャッシュするときの最小文字長
 let g:neocomplcache_min_syntax_length = 3
+" go version warningを無視
+let g:go_version_warning = 0
 
 " 補完の設定
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
