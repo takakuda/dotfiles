@@ -56,7 +56,6 @@ nnoremap k gk
 nnoremap <expr> gr ':Rgrep<CR>'
 nnoremap <expr> te ':ter ++curwin<CR>'
 nnoremap <expr> tn ':tabnew<CR>'
-nnoremap <S-t> :terminal<CR>
 nnoremap <S-f> :Files<CR>
 
 nnoremap <silent> <C-n> :bprev<CR>
@@ -136,14 +135,11 @@ NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'posva/vim-vue'
-" コードの自動補完
-NeoBundle 'Shougo/neocomplete.vim'
 " スニペットの補完機能
 NeoBundle "Shougo/neosnippet"
 " スニペット集
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'elixir-editors/vim-elixir'
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'tpope/vim-rails'
 NeoBundleLazy 'tpope/vim-endwise', {
   \ 'autoload' : { 'insert' : 1,}}
@@ -153,6 +149,15 @@ NeoBundle 'junegunn/fzf.vim'
 NeoBundle 'zxqfl/tabnine-vim'
 NeoBundle 'w0rp/ale'
 NeoBundle 'fatih/vim-go'
+NeoBundleLazy 'fatih/vim-go', {
+            \ 'autoload' : { 'filetypes' : 'go'  }
+            \ }
+
+NeoBundle 'prabirshrestha/async.vim'
+NeoBundle 'prabirshrestha/vim-lsp'
+NeoBundle 'mattn/vim-lsp-settings'
+
+NeoBundle 'rking/ag.vim'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -165,6 +170,10 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:ale_fix_on_save = 1
 let g:fzf_layout = { 'down': '~20%' }
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
 
 nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
 
@@ -289,3 +298,9 @@ let g:neocomplcache_ignore_composite_filetype_lists = {'python.unit': 'python','
 if executable('jvgrep')
   set grepprg=jvgrep
 endif
+
+let mapleader = "\<Space>"
+" save file
+nmap <Leader>w :w<CR>
+
+autocmd QuickFixCmdPost *grep* cwindow

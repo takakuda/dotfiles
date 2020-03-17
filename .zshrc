@@ -46,13 +46,9 @@ linux*)
     alias ls="ls --color"
     ;;
 esac
-alias la="ls -a"
-alias lf="ls -F"
-alias ll="ls -l"
 alias grep='grep --color'
 alias less='less -X -R'
 alias gbda="git branch | grep -v 'master' | grep -v '*' | xargs git branch -D"
-alias ra="bundle exec rubocop -a"
 alias tm="tmux"
 alias dr="git diff --name-only | xargs bundle exec rubocop -a"
 alias k="kubectl"
