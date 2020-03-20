@@ -156,6 +156,9 @@ NeoBundleLazy 'fatih/vim-go', {
 NeoBundle 'prabirshrestha/async.vim'
 NeoBundle 'prabirshrestha/vim-lsp'
 NeoBundle 'mattn/vim-lsp-settings'
+NeoBundle 'prabirshrestha/asyncomplete.vim'
+NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
+NeoBundle 'mattn/vim-goimports'
 
 NeoBundle 'rking/ag.vim'
 
