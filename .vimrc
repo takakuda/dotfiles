@@ -156,11 +156,12 @@ NeoBundleLazy 'fatih/vim-go', {
 NeoBundle 'prabirshrestha/async.vim'
 NeoBundle 'prabirshrestha/vim-lsp'
 NeoBundle 'mattn/vim-lsp-settings'
+
+NeoBundle 'rking/ag.vim'
+
 NeoBundle 'prabirshrestha/asyncomplete.vim'
 NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
 NeoBundle 'mattn/vim-goimports'
-
-NeoBundle 'rking/ag.vim'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -307,3 +308,6 @@ let mapleader = "\<Space>"
 nmap <Leader>w :w<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
+
+set rtp+=$GOROOT/misc/vim
+set completeopt=menu,preview
