@@ -146,22 +146,21 @@ NeoBundleLazy 'tpope/vim-endwise', {
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
-NeoBundle 'zxqfl/tabnine-vim'
+" NeoBundle 'zxqfl/tabnine-vim'
 NeoBundle 'w0rp/ale'
-NeoBundle 'fatih/vim-go'
-NeoBundleLazy 'fatih/vim-go', {
+" NeoBundle 'fatih/vim-go'
+" NeoBundleLazy 'fatih/vim-go', {
             \ 'autoload' : { 'filetypes' : 'go'  }
             \ }
 
 NeoBundle 'prabirshrestha/async.vim'
 NeoBundle 'prabirshrestha/vim-lsp'
 NeoBundle 'mattn/vim-lsp-settings'
-
-NeoBundle 'rking/ag.vim'
-
 NeoBundle 'prabirshrestha/asyncomplete.vim'
 NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
 NeoBundle 'mattn/vim-goimports'
+
+NeoBundle 'rking/ag.vim'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -178,8 +177,8 @@ let g:fzf_layout = { 'down': '~20%' }
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
-
 let g:ackprg = 'ag --vimgrep'
+let g:goimports = 1
 
 nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
 
@@ -313,3 +312,34 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 set rtp+=$GOROOT/misc/vim
 set completeopt=menu,preview
+
+" <Space>cd で編集中ファイルのカレントディレクトリに移動
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
+
+" <Space>cr で git ルート（プロジェクトルート）のディレクトリに移動
+command! -nargs=? -complete=dir -bang CDROOT  call s:ChangeRootDir()
+function! s:ChangeRootDir()
+    let rootDir = system("git rev-parse --show-toplevel")
+    execute 'lcd' . rootDir
+endfunction
+nnoremap <silent> <Space>cr :<C-u>CDROOT<CR>
+
+" <Space>cg でカーソル下文字列で、編集中ファイルのカレントディレクトリを vimgrep
+noremap <Space>cg :<C-u>CD<CR>:vimgrep /<C-r><C-w>/ **/* \| cwin<CR>
+
+" <Space>g でカーソル下文字列で、ルートディレクトリを vimgrep
+noremap <Space>g :<C-u>CDROOT<CR>:vimgrep /<C-r><C-w>/ **/* \| cwin<CR>
+
+
